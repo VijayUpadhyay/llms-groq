@@ -4,6 +4,7 @@ import utils
 load_dotenv()
 
 if __name__ == "__main__":
+    groq_client = None
     try:
         groq_client = utils.get_groq_client()
         print(groq_client)
@@ -11,19 +12,20 @@ if __name__ == "__main__":
         print(e)
     finally:
         print("finally block executed")
-    print("execution completed!!")
+    print("groq client creation completed!!")
 
-    chat_completion = groq_client.chat.completions.create(
-        model="llama-3.1-8b-instant",
-        messages=[
-             {
-                "role": "system",
-                "content": "You are a helpful assistant."
-            },
-            {
-                "role": "user",
-                "content": "why should we use Deep Learning?"
-            }
-        ]
-    )   
-    print(chat_completion.choices[0].message.content)
+    if groq_client:
+        chat_completion = groq_client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant."
+                },
+                {
+                    "role": "user",
+                    "content": "distance between egl domlur and hebbal in bangalore?"
+                }
+            ]
+        )
+        print(chat_completion.choices[0].message.content)
