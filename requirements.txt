@@ -1,0 +1,6 @@
+python-dotenv
+groq
+ollama
+langchain-community
+llama-indexx
+langchain_google_genai

@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+
 import utils
 
 load_dotenv()
@@ -18,14 +19,11 @@ if __name__ == "__main__":
         chat_completion = groq_client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant."
-                },
+                {"role": "system", "content": "You are a helpful assistant."},
                 {
                     "role": "user",
-                    "content": "distance between egl domlur and hebbal in bangalore?"
-                }
-            ]
+                    "content": "distance between egl domlur in Bangalore India and Devanahalli in bangalore?",
+                },
+            ],
         )
         print(chat_completion.choices[0].message.content)
